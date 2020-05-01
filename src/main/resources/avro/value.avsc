@@ -1,0 +1,56 @@
+{
+  "type": "record",
+  "name": "ConsentEvent",
+  "namespace": "com.telefonica.germany.streams.coms.consent.v1",
+  "fields": [
+    { "name": "spId", "type": "string" },
+    { "name": "lcId", "type": "string" },
+    { "name": "date", "type": "string" },
+    { "name": "current", "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "ConsentItem",
+          "fields": [
+            { "name": "date", "type": "string" },
+            { "name": "granted", "type": "boolean" },
+            { "name": "meta",
+              "type": {
+                "type": "record",
+                "name": "ConsentItemMeta",
+                "fields": [
+                  { "name": "channel", "type": "string" },
+                  { "name": "username", "type": "string" },
+                  { "name": "usertype", "type": ["null", "string"], "default": null }]}},
+            { "name": "configId", "type": "string" },
+            { "name": "versionId", "type": "string" },
+            { "name": "channels",
+              "type": [ "null", {
+                  "type": "array",
+                  "items": {
+                    "type": "record",
+                    "name": "FeatureItem",
+                    "fields": [
+                      { "name": "id", "type": "string" },
+                      { "name": "granted", "type": "boolean" }]}}], "default": null},
+            { "name": "dataTypes",
+              "type": [ "null", { "type": "array", "items": "FeatureItem" }], "default": null},
+            { "name": "purposeTypes",
+              "type": [ "null", { "type": "array", "items": "FeatureItem" }], "default": null},
+            { "name": "productTypes",
+              "type": [ "null", { "type": "array", "items": "FeatureItem" }], "default": null}
+          ]}}
+    },
+    { "name": "previous",
+      "type": [ "null", { "type": "array", "items": "ConsentItem" }], "default": null},
+    { "name": "action",
+      "type": [ "null", {
+          "type": "array",
+          "items": {
+            "type": "record",
+            "name": "ConsentActionItem",
+            "fields": [
+              { "name": "name", "type": "string" },
+              { "name": "submitDate", "type": "string" }]}}], "default": null}
+  ]
+}

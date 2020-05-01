@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "ConsentEvent_Key",
+  "namespace": "com.telefonica.germany.streams.coms.consent.v1",
+  "fields": [
+    { "name": "spId", "type": "string" },
+    { "name": "lcId", "type": "string" }
+  ]
+}
